@@ -186,7 +186,7 @@ sap.ui.define([
             onBrowseAnimalsPress: function () {
 
                 window.location.href =
-                    "/animal.adoption.useranimals/index.html";
+                    "/useranimals/index.html";
             },
 
             onMyApplicationsPress: function () {
@@ -198,13 +198,13 @@ sap.ui.define([
             onMyAdoptionsPress: function () {
 
                 window.location.href =
-                    "/animal.adoption.useradoptions/index.html";
+                    "/useradoptions/index.html";
             },
 
             onProfilePress: function () {
 
                 window.location.href =
-                    "/animal.adoption.userprofile/index.html";
+                    "/userprofile/index.html";
             }
 
         }

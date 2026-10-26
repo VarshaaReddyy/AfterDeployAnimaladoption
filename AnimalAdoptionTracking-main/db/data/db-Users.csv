@@ -1,0 +1,13 @@
+ID;firstName;lastName;email;phoneNumber;address;city;state;postalCode;role;status;createdAt;modifiedAt
+fd120159-3440-51b4-a5a5-2715e9633c67;Srivarsha;Gopalolla;gopalollasrivarsha@gmail.com;9800000001;14 Residency Rd;Bengaluru;Karnataka;560025;ADMIN;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+992b413f-f4ba-523f-8c2f-eb4bc54f0a71;Maithili;Rao;maithili.rao@example.com;9800000002;7 Jubilee Hills;Hyderabad;Telangana;500033;ADMIN;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+13e2e28a-8a19-5f9d-a96c-39db1e54afba;Darshan;Kumar;darshan.kumar@example.com;9800000003;3 T Nagar;Chennai;Tamil Nadu;600017;SHELTER_STAFF;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+f99bb783-d306-56b8-a08c-1a47d78eb11d;Neha;Sharma;neha.sharma@example.com;9800000004;14 Residency Rd;Bengaluru;Karnataka;560025;SHELTER_STAFF;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+79c31158-51fa-522e-8522-24fc835f5c86;Sarah;Johnson;sarah.johnson@example.com;9800000011;7 Jubilee Hills;Hyderabad;Telangana;500033;ADOPTER;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+1a807c87-3b55-558d-aa21-385899b7b896;Rahul;Verma;rahul.verma@example.com;9800000012;3 T Nagar;Chennai;Tamil Nadu;600017;ADOPTER;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+d66722f4-107c-5ae2-8cd7-4476bd86c624;Ananya;Iyer;ananya.iyer@example.com;9800000013;14 Residency Rd;Bengaluru;Karnataka;560025;ADOPTER;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+eb124b38-3bed-50d8-8f60-15951e161d11;Vikram;Singh;vikram.singh@example.com;9800000014;7 Jubilee Hills;Hyderabad;Telangana;500033;ADOPTER;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+3c1002a8-043d-5197-a23c-6440aa04af10;Priya;Nair;priya.nair@example.com;9800000015;3 T Nagar;Chennai;Tamil Nadu;600017;ADOPTER;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+8b192777-e1c0-58e8-9bed-5d66dc3f14a6;Arjun;Reddy;arjun.reddy@example.com;9800000016;14 Residency Rd;Bengaluru;Karnataka;560025;ADOPTER;ACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+474c147b-a5b0-5b13-aa90-c9ed8b55ada4;Kavya;Menon;kavya.menon@example.com;9800000017;7 Jubilee Hills;Hyderabad;Telangana;500033;ADOPTER;INACTIVE;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+c2398ef2-b17c-55fd-aca5-a6d608319f85;Rohan;Das;rohan.das@example.com;9800000018;3 T Nagar;Chennai;Tamil Nadu;600017;ADOPTER;SUSPENDED;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z

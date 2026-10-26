@@ -78,6 +78,35 @@ modules:
           artifacts:
             - ./*
           target-path: webapp/animalinspections
+                # User Dashboard
+        - name: animaladoption-test-userdashboard-ui
+          artifacts:
+            - ./*
+          target-path: webapp/userdashboard
+
+        # User Animals
+        - name: animaladoption-test-useranimals-ui
+          artifacts:
+            - ./*
+          target-path: webapp/useranimals
+
+        # User Applications
+        - name: animaladoption-test-userapplications-ui
+          artifacts:
+            - ./*
+          target-path: webapp/userapplications
+
+        # User Adoptions
+        - name: animaladoption-test-useradoptions-ui
+          artifacts:
+            - ./*
+          target-path: webapp/useradoptions
+
+        # User Profile
+        - name: animaladoption-test-userprofile-ui
+          artifacts:
+            - ./*
+          target-path: webapp/userprofile
 
     requires:
       - name: animaladoption-test-auth
@@ -225,7 +254,85 @@ modules:
       build-result: dist
       supported-platforms: []
 
+    # ==========================================================
+  # USER DASHBOARD UI5 APPLICATION
+  # ==========================================================
 
+  - name: animaladoption-test-userdashboard-ui
+    type: html5
+    path: app/userdashboard
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+  # ==========================================================
+  # USER ANIMALS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-useranimals-ui
+    type: html5
+    path: app/useranimals
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+  # ==========================================================
+  # USER APPLICATIONS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-userapplications-ui
+    type: html5
+    path: app/userapplications
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+  # ==========================================================
+  # USER ADOPTIONS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-useradoptions-ui
+    type: html5
+    path: app/useradoptions
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+  # ==========================================================
+  # USER PROFILE UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-userprofile-ui
+    type: html5
+    path: app/userprofile
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
   # ==========================================================
   # CAP SERVICE
   # ==========================================================

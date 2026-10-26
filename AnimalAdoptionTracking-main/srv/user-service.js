@@ -11,7 +11,41 @@ module.exports = cds.service.impl(async function () {
         UsersSrv
     } = this.entities;
 
+        // ==========================================================
+    // CURRENT USER: find (or create) the Users row for the login
+    // ==========================================================
 
+    const getCurrentUserID = async (req) => {
+
+        // With XSUAA, req.user.id is the login email
+        const email =
+            (req.user.attr?.email || req.user.id).toLowerCase();
+
+        const user = await SELECT.one
+            .from(UsersSrv)
+            .columns("ID")
+            .where({ email });
+
+        if (user) {
+            return user.ID;
+        }
+
+        // First login: create the adopter profile (FR-USR-001)
+        const ID = cds.utils.uuid();
+
+        await INSERT.into(UsersSrv).entries({
+            ID,
+            firstName: req.user.attr?.givenName || "",
+            lastName: req.user.attr?.familyName || "",
+            email,
+            role: "ADOPTER",
+            status: "ACTIVE",
+            createdAt: new Date(),
+            modifiedAt: new Date()
+        });
+
+        return ID;
+    };
     // ==========================================================
     // APPLY FOR ADOPTION
     // ==========================================================
@@ -35,7 +69,7 @@ module.exports = cds.service.impl(async function () {
             // --------------------------------------------------
 
             const applicantID =
-                req.user.id;
+                await getCurrentUserID(req);
 
 
             // --------------------------------------------------
@@ -173,7 +207,7 @@ module.exports = cds.service.impl(async function () {
         async (req) => {
 
             const USER_ID =
-                req.user.id;
+                await getCurrentUserID(req);
 
 
             const myApplications =
@@ -226,7 +260,7 @@ module.exports = cds.service.impl(async function () {
     this.on("READ", "AdoptionsSrv", async (req) => {
 
     const USER_ID =
-        req.user.id;
+        await getCurrentUserID(req);
 
     const applications = await SELECT
         .from(AdoptionApplicationsSrv)
@@ -252,7 +286,7 @@ module.exports = cds.service.impl(async function () {
     this.on("READ", "AdoptionApplicationsSrv", async (req) => {
 
     const USER_ID =
-        req.user.id;
+        await getCurrentUserID(req);
 
     return await SELECT
         .from(AdoptionApplicationsSrv)
@@ -265,7 +299,7 @@ module.exports = cds.service.impl(async function () {
     this.on("READ", "UsersSrv", async (req) => {
 
     const USER_ID =
-        req.user.id;
+        await getCurrentUserID(req);
 
     return await SELECT
         .from(UsersSrv)
@@ -277,7 +311,7 @@ module.exports = cds.service.impl(async function () {
     this.on("editProfile", async (req) => {
 
     const USER_ID =
-        req.user.id;
+        await getCurrentUserID(req);
 
     const {
         firstName,

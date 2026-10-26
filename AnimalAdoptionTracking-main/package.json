@@ -60,25 +60,25 @@
     "app/useradoptions",
     "app/userprofile"
   ],
-  "cds": {
-  "requires": {
-    "auth": {
-      "kind": "mocked",
-      "users": {
-        "admin": {
-          "password": "admin123",
-          "roles": [
-            "Admin"
-          ]
-        },
-        "user": {
-          "password": "user123",
-          "roles": [
-            "User"
-          ]
+    "cds": {
+    "requires": {
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "admin": {
+            "password": "admin123",
+            "roles": [
+              "Admin"
+            ]
+          },
+          "sarah.johnson@example.com": {
+            "password": "user123",
+            "roles": [
+              "User"
+            ]
+          }
         }
-      }
-    },
+      },
       "[production]": {
         "auth": "xsuaa"
       }

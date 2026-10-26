@@ -1,0 +1,6 @@
+ID;application_ID;animal_ID;adoptionDate;status;completedBy_ID;remarks;createdAt;modifiedAt
+62a8f8a7-3217-56b8-b65a-bc9ef0eb37d7;6181792e-e7ba-5533-9add-3aa9911b0c36;13f798aa-cc72-5b8a-95c4-d41b72221b5b;2026-04-19;COMPLETED;13e2e28a-8a19-5f9d-a96c-39db1e54afba;Generated after approval;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+b1be7de9-a2cd-589b-8b1c-ae1d8ee92784;c17a5c67-94cc-5f6c-a5e6-a4d2472b398a;8ba8cc3b-168e-5d8d-a04f-c13bb68cf3d6;2026-02-25;COMPLETED;13e2e28a-8a19-5f9d-a96c-39db1e54afba;Generated after approval;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+d8b5f72a-ed28-5dd0-ada8-f9ee97b78e32;f8c92770-fcbf-536d-b6db-3dee66fe9271;1112e7be-47c3-572c-a1ab-46519c971c05;2026-03-20;COMPLETED;13e2e28a-8a19-5f9d-a96c-39db1e54afba;Generated after approval;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+26bb4fd2-89bb-5278-8476-2959fd0b0948;7353b39a-e535-5ec3-8c2e-1e4e48fd9118;28003734-627f-5028-b65b-3f17d956b742;2026-05-28;COMPLETED;13e2e28a-8a19-5f9d-a96c-39db1e54afba;Generated after approval;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
+fc4a94f9-78d1-5fb6-9210-fe1dbfd8f8d5;b9ea91ae-1ba4-5ea0-945d-e1a6164cb0e9;0a48b166-13ab-582f-bf66-3a637077f594;2026-07-15;PENDING;;Generated after approval;2026-10-01T09:00:00Z;2026-10-01T09:00:00Z
