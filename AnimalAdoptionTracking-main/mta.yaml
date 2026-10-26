@@ -1,0 +1,309 @@
+_schema-version: 3.3.0
+ID: animaladoption-test
+version: 1.0.0
+description: "Animal Adoption Testing Project"
+
+parameters:
+  enable-parallel-deployments: true
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+
+modules:
+
+  # ==========================================================
+  # APPRouter
+  # ==========================================================
+
+  - name: animaladoption-test-approuter
+    type: approuter.nodejs
+    path: app/router
+
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+
+    build-parameters:
+      requires:
+
+        # Dashboard
+        - name: animaladoption-test-ui
+          artifacts:
+            - ./*
+          target-path: webapp
+
+        # Users
+        - name: animaladoption-test-users-ui
+          artifacts:
+            - ./*
+          target-path: webapp/animalusers
+
+        # Shelters
+        - name: animaladoption-test-shelters-ui
+          artifacts:
+            - ./*
+          target-path: webapp/animalshelters
+
+        # Animals
+        - name: animaladoption-test-animals-ui
+          artifacts:
+            - ./*
+          target-path: webapp/animalanimals
+
+        # Applications
+        - name: animaladoption-test-applications-ui
+          artifacts:
+            - ./*
+          target-path: webapp/animalapplications
+
+        # Adoptions
+        - name: animaladoption-test-adoptions-ui
+          artifacts:
+            - ./*
+          target-path: webapp/animaladoptions
+
+        # Health Records
+        - name: animaladoption-test-health-ui
+          artifacts:
+            - ./*
+          target-path: webapp/animalhealth
+
+        # Inspections
+        - name: animaladoption-test-inspections-ui
+          artifacts:
+            - ./*
+          target-path: webapp/animalinspections
+
+    requires:
+      - name: animaladoption-test-auth
+
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api
+          url: ~{srv-url}
+          forwardAuthToken: true
+
+
+  # ==========================================================
+  # DASHBOARD UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-ui
+    type: html5
+    path: app/animaladoption
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+
+  # ==========================================================
+  # USERS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-users-ui
+    type: html5
+    path: app/animalusers
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+
+  # ==========================================================
+  # SHELTERS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-shelters-ui
+    type: html5
+    path: app/animalshelters
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+
+  # ==========================================================
+  # ANIMALS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-animals-ui
+    type: html5
+    path: app/animalanimals
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+
+  # ==========================================================
+  # APPLICATIONS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-applications-ui
+    type: html5
+    path: app/animalapplications
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+
+  # ==========================================================
+  # ADOPTIONS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-adoptions-ui
+    type: html5
+    path: app/animaladoptions
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+
+  # ==========================================================
+  # HEALTH RECORDS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-health-ui
+    type: html5
+    path: app/animalhealth
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+
+  # ==========================================================
+  # INSPECTIONS UI5 APPLICATION
+  # ==========================================================
+
+  - name: animaladoption-test-inspections-ui
+    type: html5
+    path: app/animalinspections
+
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx ui5 build --all
+      build-result: dist
+      supported-platforms: []
+
+
+  # ==========================================================
+  # CAP SERVICE
+  # ==========================================================
+
+  - name: animaladoption-test-srv
+    type: nodejs
+    path: gen/srv
+
+    parameters:
+      instances: 1
+      buildpack: nodejs_buildpack
+
+    build-parameters:
+      builder: npm-ci
+
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+
+    requires:
+      - name: animaladoption-test-auth
+      - name: animaladoption-test-db
+
+
+  # ==========================================================
+  # DATABASE DEPLOYER
+  # ==========================================================
+
+  - name: animaladoption-test-db-deployer
+    type: hdb
+    path: gen/db
+
+    parameters:
+      buildpack: nodejs_buildpack
+
+    requires:
+      - name: animaladoption-test-db
+
+
+# ==========================================================
+# RESOURCES
+# ==========================================================
+
+resources:
+
+  # ==========================================================
+  # XSUAA
+  # ==========================================================
+
+  - name: animaladoption-test-auth
+    type: org.cloudfoundry.managed-service
+
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+
+      config:
+        xsappname: animaladoption-test-${org}-${space}
+        tenant-mode: dedicated
+
+        oauth2-configuration:
+          redirect-uris:
+            - "https://612ee3fbtrial-dev-animaladoption-test-approuter.cfapps.us10-001.hana.ondemand.com/login/callback"
+
+          credential-types:
+            - "binding-secret"
+            - "x509"
+
+
+  # ==========================================================
+  # HANA HDI CONTAINER
+  # ==========================================================
+
+  - name: animaladoption-test-db
+    type: com.sap.xs.hdi-container
+
+    parameters:
+      service: hana
+      service-plan: hdi-shared
